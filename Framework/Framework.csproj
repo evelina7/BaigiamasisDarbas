@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Driver.cs" />
     <Compile Include="Pages\Common.cs" />
+    <Compile Include="Pages\Telia.cs" />
+    <Compile Include="Pages\TeliaMano.cs" />
+    <Compile Include="Pages\TeliaManoPrivatiems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
