@@ -1,4 +1,5 @@
-﻿
+﻿using OpenQA.Selenium;
+
 namespace Framework.Pages
 {
     public class TeliaManoPrivatiems
