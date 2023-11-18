@@ -1,16 +1,14 @@
-﻿
+﻿using OpenQA.Selenium;
+
 namespace Framework.Pages
 {
     public class TeliaMano
     {
-        internal class Locators
-        {
-            internal static string privateClientLoginButton = "(//*[@type='submit'])[3]";
-        }
+        private static string privateClientLoginButton = "(//*[text()='Mobiliojo ryšio ir namų paslaugų savitarna'])[1]/..//button";
 
         public static void ClickPrivateClientLoginButton()
         {
-            Common.ClickElement(Locators.privateClientLoginButton);
+            Common.ClickElement(privateClientLoginButton);
         }
     }
 }

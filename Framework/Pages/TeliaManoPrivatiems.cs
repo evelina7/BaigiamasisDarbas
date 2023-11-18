@@ -4,20 +4,19 @@ namespace Framework.Pages
 {
     public class TeliaManoPrivatiems
     {
-        internal class Locators
-        {
-            internal static string byPasswordSelection = "//*[@href='/mano/privatiems/sso/prisijungti-el-pastu']";
-            internal static string passwordInputField = "(//*[@type='password'])[2]";
-            internal static string byBankAccountSelection = "//*[@href='/mano/privatiems/sso/prisijungti-banku']";
-            internal static string chooseBankSwedbank = "//*[@alt='SWEDBANK']";
-            internal static string loginButton = "(//*[@type='submit'])[1]";
-        }
+        private static string byPasswordSelection = "//*[@href='/mano/privatiems/sso/prisijungti-el-pastu']"; 
+        private static string emailOrUsernameInputField = "//*[@placeholder='El. pašto adresas (Telia ID)']";
+        private static string passwordInputField = "(//*[@type='password'])[2]";
+        private static string byBankAccountSelection = "//*[@href='/mano/privatiems/sso/prisijungti-banku']";
+        private static string chooseBankSwedbank = "//*[@alt='SWEDBANK']";
+        private static string loginButton = "(//*[@type='submit'])[1]";
+        
 
         public static bool CheckIfSelectedLoginMethodIsByPassword()
         {
             string expectedClassName = "link-icon link-icon--no-float";
 
-            IWebElement element = Common.GetElement(Locators.byPasswordSelection);
+            IWebElement element = Common.GetElement(byPasswordSelection);
             string actualClassName = element.GetAttribute("class");
 
             if (actualClassName == expectedClassName)
@@ -34,7 +33,7 @@ namespace Framework.Pages
         {
             string expectedClassName = "link-icon link-icon--no-float";
 
-            IWebElement element = Common.GetElement(Locators.byBankAccountSelection);
+            IWebElement element = Common.GetElement(byBankAccountSelection);
             string actualClassName = element.GetAttribute("class");
 
             if (actualClassName == expectedClassName)
@@ -51,7 +50,7 @@ namespace Framework.Pages
         {
             if (CheckIfSelectedLoginMethodIsByPassword() == false)
             {
-                Common.ClickElement(Locators.byPasswordSelection);
+                Common.ClickElement(byPasswordSelection);
             }
         }
 
@@ -59,7 +58,7 @@ namespace Framework.Pages
         {
             if (CheckIfSelectedLoginMethodIsByBankAccount() == false)
             {
-                Common.ClickElement(Locators.byBankAccountSelection);
+                Common.ClickElement(byBankAccountSelection);
             }
         }
 
@@ -67,7 +66,7 @@ namespace Framework.Pages
         {
             string expectedInputFieldPlaceholderValue = "Slaptažodis";
 
-            IWebElement element = Common.GetElement(Locators.passwordInputField);
+            IWebElement element = Common.GetElement(passwordInputField);
             string actualInputFieldPlaceholderValue = element.GetAttribute("placeholder");
 
             if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
@@ -80,10 +79,32 @@ namespace Framework.Pages
             }
         }
 
+        public static bool CheckIfUsernameInputFieldExisting()
+        {
+            string expectedInputFieldPlaceholderValue = "El. pašto adresas (Telia ID)";
+
+            IWebElement element = Common.GetElement(emailOrUsernameInputField);
+            string actualInputFieldPlaceholderValue = element.GetAttribute("placeholder");
+
+            if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static void PlaceholderInPasswordInputField()
+        {
+            Common.ClickElement(passwordInputField);
+        }
+
         public static void SelectBankSwedbank()
         {
-            Common.ClickElement(Locators.chooseBankSwedbank);
-            Common.ClickElement(Locators.loginButton);
+            Common.ClickElement(chooseBankSwedbank);
+            Common.ClickElement(loginButton);
         }
     }
 }

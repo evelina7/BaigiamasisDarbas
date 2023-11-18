@@ -15,10 +15,15 @@ namespace Tests
             TeliaMano.ClickPrivateClientLoginButton();
             TeliaManoPrivatiems.CheckIfSelectedLoginMethodIsByPassword();
             TeliaManoPrivatiems.SelectByPassword();
+            TeliaManoPrivatiems.CheckIfUsernameInputFieldExisting();
             TeliaManoPrivatiems.CheckIfPasswordInputFieldExisting();
-            bool actualInputField = TeliaManoPrivatiems.CheckIfPasswordInputFieldExisting();
+            TeliaManoPrivatiems.PlaceholderInPasswordInputField();
+            bool actualPasswordInputField = TeliaManoPrivatiems.CheckIfPasswordInputFieldExisting();
+            bool actualUsernameInputField = TeliaManoPrivatiems.CheckIfUsernameInputFieldExisting();
 
-            Assert.That(actualInputField, Is.EqualTo(expectedInputField));
+
+            Assert.That(actualUsernameInputField, Is.EqualTo(expectedInputField));
+            Assert.That(actualPasswordInputField, Is.EqualTo(expectedInputField));
         }
 
         [Test]
@@ -35,6 +40,5 @@ namespace Tests
 
             Assert.That(actualPageTitle, Is.EqualTo(expectedPageTitle));
         }
-
     }
 }
