@@ -44,7 +44,7 @@ https://www.telia.lt   //link'as dar bus sutvarkytas, kad atsivaizduotų gražia
 
 
 4. Buying a product    
-    1. Buy a product for full price without price plan for non-customer   (šis scenarijus man nepatinka, nes turi labai daug žingsnių. Galvojant, kad jei būtų kaip regression testai, jis kaip ir tiktų. Tačiau čia nėra regression testai, tad galbūt išskaidyti į mažesnius test scenarijus ir tiesiog juos tada paminėti prie preconditions? Pvz test scenarijus - produkto pridėjimas į krepšelį ir pan.)
+    1. Buy a product for full price without price plan for non-customer   (šis scenarijus man nepatinka, nes turi labai daug žingsnių. Galvojant, kad jei būtų kaip regression testai, jis kaip ir tiktų. Tačiau čia nėra regression testai, tad galbūt išskaidyti į mažesnius test scenarijus ir tiesiog juos tada paminėti prie preconditions? Pvz test scenarijus - produkto pridėjimas į krepšelį. Tada kliento užsakymo duomenų suvedimas irgi gal kaip atskiras scenarijus, nes ten labai daug input fieldų, kuriuos kiekvieną reiks užpildyti ir pan. Ar palikti kaip yra? Nes norėčiau ištestuoti produkto pirkimą, kadangi tai pagrindinis telia eshop funkcionalumas kaip ir)
         1. Open webpage
         2. Click on E-shop selection
         3. Select "Mobilieji telefonai"
@@ -53,7 +53,7 @@ https://www.telia.lt   //link'as dar bus sutvarkytas, kad atsivaizduotų gražia
         6. Select radio button "Visa kaina"
         7. Click on "Užsakyti"
         8. In a new page click on "Užsakyti" again
-        9. 
+        9. (Toliau bus kliento užsakymo duomenys, kur yra labai daug fieldu, jei atskirai rašant žingsniais, bus dar kokie 10, jei ne daugiau, tad tiesiog labai susiplaka į vieną scenarijų. )  ) 
 
         Assert: check if user is redirected to external page for payment
 
