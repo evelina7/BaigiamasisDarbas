@@ -21,12 +21,8 @@ namespace Framework.Pages
         public static void ClickButtonSubmit(string locator)
         {
             string script = "arguments[0].scrollIntoView(true);";
-            // ExecuteJavascript(script, locator);
             ((IJavaScriptExecutor)Driver.driver).ExecuteScript(script, locator);
             GetElement(locator).Click();
-
-            //((IJavaScriptExecutor)Driver.driver).ExecuteScript(script, locator);
-            //GetElement(locator).Click();
         }
 
         internal static void SendKeysToElement(string locator, string keys)
@@ -38,6 +34,12 @@ namespace Framework.Pages
         {
             WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(5));
             wait.Until(d => d.FindElement(By.XPath(locator)));
+        }
+
+        internal static string GetElementCssPropertyValue(string locator, string propertyName)
+        {
+            IWebElement element = GetElement(locator);
+            return element.GetCssValue(propertyName);
         }
     }
 }
