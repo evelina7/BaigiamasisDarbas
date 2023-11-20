@@ -9,9 +9,7 @@ namespace Framework.Pages
         public static string CheckIfSearchResultIsEqualToSearchValue()
         {
             string expectedInputFieldPlaceholderValue = "samsung";
-
-            IWebElement element = Common.GetElement(searchInputField);
-            string actualInputFieldPlaceholderValue = element.GetAttribute("value");
+            string actualInputFieldPlaceholderValue = Common.GetElementAttribute(searchInputField, "value");
 
             if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
             {

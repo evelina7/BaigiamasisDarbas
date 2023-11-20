@@ -13,6 +13,13 @@ namespace Framework.Pages
             return Driver.GetDriver().FindElement(By.XPath(locator));
         }
 
+        internal static string GetElementText(string locator)
+        {
+            IWebElement element = Common.GetElement(locator);
+            string locatorText = element.Text;
+            return locatorText;
+        }
+
         internal static void ClickElement(string locator)
         {
             GetElement(locator).Click();
@@ -32,7 +39,7 @@ namespace Framework.Pages
 
         public static void WaitForElementToBeVisible(string locator)
         {
-            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(5));
+            WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(10));
             wait.Until(d => d.FindElement(By.XPath(locator)));
         }
 
@@ -40,6 +47,12 @@ namespace Framework.Pages
         {
             IWebElement element = GetElement(locator);
             return element.GetCssValue(propertyName);
+        }
+
+        internal static string GetElementAttribute(string locator, string attributeName)
+        {
+            IWebElement element = GetElement(locator);
+            return element.GetAttribute(attributeName);
         }
     }
 }
