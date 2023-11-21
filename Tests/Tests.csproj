@@ -59,7 +59,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTests.cs" />
+    <Compile Include="BuyProduct.cs" />
+    <Compile Include="CreateNewAccountPrivate.cs" />
+    <Compile Include="EShopPhonesPageFunctionality.cs" />
+    <Compile Include="GlobalSearch.cs" />
     <Compile Include="MethodsLoginToWebSelfCare.cs" />
+    <Compile Include="ProductComparison.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
