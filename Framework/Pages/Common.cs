@@ -2,6 +2,8 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Framework.Pages
 
@@ -53,6 +55,11 @@ namespace Framework.Pages
         {
             IWebElement element = GetElement(locator);
             return element.GetAttribute(attributeName);
+        }
+
+        public static List<IWebElement> GetElements(string locator)
+        {
+            return Driver.GetDriver().FindElements(By.XPath(locator)).ToList();
         }
     }
 }
