@@ -1,6 +1,6 @@
 ﻿# BaigiamasisDarbas
 
-https://www.telia.lt   //link'as dar bus sutvarkytas, kad atsivaizduotų gražiai
+[Telia](https://www.telia.lt)   
 
 1. Different methods to login to webselfcare
     1. Private client: there is a possibility to login by username and password
@@ -9,7 +9,7 @@ https://www.telia.lt   //link'as dar bus sutvarkytas, kad atsivaizduotų gražia
         3. Click on "Prisijungti"
         4. Select login method "Su slaptažodžiu"
 
-        Assert: check if username and password fields are visible
+        *Assert: check if username and password fields are visible*
 
     1. Private client: there is a possibility to login by bank account
         1. Open webpage
@@ -19,7 +19,7 @@ https://www.telia.lt   //link'as dar bus sutvarkytas, kad atsivaizduotų gražia
         5. Select bank from list
         6. Click on "Prisijungti"
 
-        Assert: check if user is redirected to selected bank login page
+        *Assert: check if user is redirected to selected bank login page*
 
 
 2. New account creation
@@ -30,7 +30,7 @@ https://www.telia.lt   //link'as dar bus sutvarkytas, kad atsivaizduotų gražia
         4. Type "email" into Email input field
         5. Click on "Tęsti"
        
-       Assert: check if email input field becomes red and error message with text "Neteisingai įvestas el. pašto adresas" is visible 
+       *Assert: check if email input field becomes red and error message with text "Neteisingai įvestas el. pašto adresas" is visible* 
 
 
 3. Global search functionality
@@ -40,31 +40,33 @@ https://www.telia.lt   //link'as dar bus sutvarkytas, kad atsivaizduotų gražia
         3. Type product name "samsung"
         4. Press Enter (from keyboard)
 
-        Assert: check if header of results page contains the same name as it was in search input field 
+        *Assert: check if header of results page contains the same name as it was in search input field* 
 
 
-4. Buying a product    
-    1. Buy a product for full price without price plan for non-customer   (šis scenarijus man nepatinka, nes turi labai daug žingsnių. Galvojant, kad jei būtų kaip regression testai, jis kaip ir tiktų. Tačiau čia nėra regression testai, tad galbūt išskaidyti į mažesnius test scenarijus ir tiesiog juos tada paminėti prie preconditions? Pvz test scenarijus - produkto pridėjimas į krepšelį. Tada kliento užsakymo duomenų suvedimas irgi gal kaip atskiras scenarijus, nes ten labai daug input fieldų, kuriuos kiekvieną reiks užpildyti ir pan. Ar palikti kaip yra? Nes norėčiau ištestuoti produkto pirkimą, kadangi tai pagrindinis telia eshop funkcionalumas kaip ir)
-        1. Open webpage
-        2. Click on E-shop selection
-        3. Select "Mobilieji telefonai"
-        4. Click on a first phone from products list
-        5. Select "Be plano"
-        6. Select radio button "Visa kaina"
-        7. Click on "Užsakyti"
-        8. In a new page click on "Užsakyti" again
-        9. (Toliau bus kliento užsakymo duomenys, kur yra labai daug fieldu, jei atskirai rašant žingsniais, bus dar kokie 10, jei ne daugiau, tad tiesiog labai susiplaka į vieną scenarijų. )  ) 
 
-        Assert: check if user is redirected to external page for payment
-
-5. Product comparison
+4. Product comparison
     1. Two products comparison
         1. Open webpage
+        2. Click on E-shop selection
+        3. Select "Telefonai"
+        4. Select checkbox "Palyginti" next to the first phone from products list
+        5. Select checkbox "Palyginti" next to the second phone from products list
+        6. Click on "Prekių palyginimas" button
+        7. Click on "Palyginti pasirinktas" button
+        8. Open product comparison page
+
+        *Assert: check if compared products titles are the same as they were selected from products list*
 
 
-6. Phones page functionality
+5. Phones page functionality
     1. Filters functionality
         1. Open webpage
+        2. Click on E-shop selection
+        3. Select "Telefonai"
+        4. Select "Apple" checkbox
+
+        *Assert: check if all products in results page contains selected checkbox value*
+
 
 
 
