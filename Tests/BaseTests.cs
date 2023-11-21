@@ -1,6 +1,7 @@
 ﻿using Framework;
 using Framework.Pages;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 
 namespace Tests
 {
@@ -17,6 +18,12 @@ namespace Tests
         [TearDown]
         public void TearDown()
         {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                string name = TestContext.CurrentContext.Test.MethodName;
+                Driver.TakeScreenshot(name);
+            }
+
             Driver.QuitDriver();
         }
     }

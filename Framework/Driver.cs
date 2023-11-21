@@ -1,42 +1,58 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System;
+using System.IO;
+using System.Threading;
 
 namespace Framework
 {
     public class Driver
     {
-        public static IWebDriver driver;
+        public static ThreadLocal<IWebDriver> driver = new ThreadLocal<IWebDriver>();   
 
         public static void InitializeMaximizedDriver()
         {
             ChromeOptions MyOptions = new ChromeOptions();
             MyOptions.AddArgument("--start-maximized");
-            driver = new ChromeDriver(MyOptions);
+            driver.Value = new ChromeDriver(MyOptions);
         }
 
         internal static IWebDriver GetDriver()
         {
-            return driver;
+            return driver.Value;
         }
 
         public static void OpenPage(string url)
         {
-            driver.Url = url;
+            driver.Value.Url = url;
         }
 
         public static string GetPageTitle()
         {
-            return driver.Title;
+            return driver.Value.Title;
         }
 
-        public static string GetCurrentUrl()
+        internal static string GetCurrentUrl()
         {
-            return driver.Url;
+            return driver.Value.Url;
         }
 
         public static void QuitDriver()
         {
-            driver.Quit();
+            driver.Value.Quit();
+        }
+
+        public static void TakeScreenshot(string name)
+        {
+            string screenshotDirectoryPath = $"{AppDomain.CurrentDomain.BaseDirectory}Screenshots";
+            string screenshotName = $"{name}-{DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss")}";
+            string screenshotFilePath = $"{screenshotDirectoryPath}\\{screenshotName}.png";
+
+            Directory.CreateDirectory(screenshotDirectoryPath);
+            Screenshot screenshot = ((ITakesScreenshot)driver.Value).GetScreenshot();
+            screenshot.SaveAsFile(screenshotFilePath, ScreenshotImageFormat.Png);
+
+            // Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);  //directorijos kelias
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Framework.Pages
 
         public static void SelectPhonesFromEshopSelection()
         {
+            Common.WaitForElementToBeVisible(eshopSelectionPhones);
             Common.ClickElement(eshopSelectionPhones);
         }
 
