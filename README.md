@@ -69,5 +69,19 @@
 
 
 
+6. Buy a new product 
+    1. Adding product to basket without login
+        1. Open webpage
+        2. Click on E-shop selection
+        3. Select "Telefonai"
+        4. Select first phone from the list
+        5. Select "Be mokėjimo plano" button
+        6. Select "Visa kaina" radio button
+        7. Click on "Užsakyti" button
+
+        *Assert: check if the selected product was added into basket by comparing names*
+
+
+
 
 
