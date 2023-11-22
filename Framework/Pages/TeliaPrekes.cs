@@ -7,12 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
+using System.Security.Policy;
 
 namespace Framework.Pages
 {
     public class TeliaPrekes
     {
         private static string firstProduct = "//*[@class='js-product-compare-image']";
+        private static string firstProductTitle = "(//*[@class='col-lg-4 col-sm-6 col-xs-12 ']//*[@class='mobiles-product-card__title js-open-product'])[1]";
         private static string firstProductComparisonCheckbox = "//*[@class='col-lg-4 col-sm-6 col-xs-12 ']//*[text()='Palyginti']";  
         private static string secondProductComparisonCheckbox = "(//*[@class='col-lg-4 col-sm-6 col-xs-12 ']//*[text()='Palyginti'])[2]";
         private static string productComparisonButton = "//*[@class='sticky-navigation-footer__button']";
@@ -103,6 +105,12 @@ namespace Framework.Pages
             { 
                 return false;   
             }
+        }
+
+        public static string GetProductTitle()
+        {
+            string elementTitleValue = Common.GetElementText(firstProductTitle);
+            return elementTitleValue;
         }
     }
 }
