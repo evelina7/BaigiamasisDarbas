@@ -70,7 +70,7 @@
 
 
 6. Buy a new product 
-    1. Adding product to basket without login
+    1. Add product into basket without login
         1. Open webpage
         2. Click on E-shop selection
         3. Select "Telefonai"
