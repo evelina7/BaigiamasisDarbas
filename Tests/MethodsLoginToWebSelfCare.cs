@@ -29,7 +29,7 @@ namespace Tests
         [Test]
         public void ByBankAccount()
         {
-            string expectedPageTitle = "Prisijungimas per banką";
+            string expectedPageTitle = "Login";
 
             Telia.ClickHomepageLoginButton();
             TeliaMano.ClickPrivateClientLoginButton();
