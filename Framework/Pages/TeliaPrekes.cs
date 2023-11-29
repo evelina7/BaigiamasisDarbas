@@ -84,28 +84,59 @@ namespace Framework.Pages
             Common.ClickElement(checkboxApplePhones);
         }
 
-        public static bool GetAllFilteredSearchResults()
+        public static List<string> GetAllFilteredSearchResults()
         {
             string elementTitleValue = Common.GetElementText(checkboxApplePhones);
 
-            List<bool> resultsList = new List<bool>();
+            List<string> resultsList = new List<string>();
             List<IWebElement> elements = Common.GetElements(resultsData);
             foreach (IWebElement element in elements)
             {
                 if (element.GetAttribute("title").Contains(elementTitleValue))
                 {
-                    resultsList.Add(element.Enabled);
-                }  
+                    resultsList.Add(element.GetAttribute("title"));
+                }
             }
-            if (resultsList.Contains(true))
-            {
-                return true;
-            }
-            else
-            { 
-                return false;   
-            }
+            return resultsList;
         }
+
+        public static List<string> CompareAllFilteredSearchResults()
+        {
+            string elementTitleValue = Common.GetElementText(checkboxApplePhones);
+            List<string> resultsList = new List<string>();
+
+            foreach (string element in GetAllFilteredSearchResults())
+            {
+                if (element.Contains(elementTitleValue))
+                {
+                    resultsList.Add(element);
+                }
+            }
+            return resultsList;
+        }
+
+        //public static bool GetAllFilteredSearchResults()
+        //{
+        //    string elementTitleValue = Common.GetElementText(checkboxApplePhones);
+
+        //    List<bool> resultsList = new List<bool>();
+        //    List<IWebElement> elements = Common.GetElements(resultsData);
+        //    foreach (IWebElement element in elements)
+        //    {
+        //        if (element.GetAttribute("title").Contains(elementTitleValue))
+        //        {
+        //            resultsList.Add(element.Enabled);
+        //        }  
+        //    }
+        //    if (resultsList.Contains(true))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    { 
+        //        return false;   
+        //    }
+        //}
 
         public static string GetProductTitle()
         {

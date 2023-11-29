@@ -13,12 +13,13 @@ namespace Tests
         [Test]
         public void FiltersFunctionality()
         {
-            bool expectedFilteredSearchResult = true;
+            //bool expectedFilteredSearchResult = true;
 
             Telia.ClickEshopSelectionButton();
             Telia.SelectPhonesFromEshopSelection();
             TeliaPrekes.SelectCheckboxApplePhones();
-            bool actualFilteredSearchResult = TeliaPrekes.GetAllFilteredSearchResults();
+            List<string> actualFilteredSearchResult = TeliaPrekes.GetAllFilteredSearchResults();
+            List<string> expectedFilteredSearchResult = TeliaPrekes.CompareAllFilteredSearchResults();
 
             Assert.That(actualFilteredSearchResult, Is.EqualTo(expectedFilteredSearchResult));
         }
