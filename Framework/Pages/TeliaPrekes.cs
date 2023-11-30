@@ -68,7 +68,7 @@ namespace Framework.Pages
             return element;
         }
 
-        public static string GetProductTitle()
+        public static string GetFirstProductTitle()
         {
             string elementTitleValue = Common.GetElementText(firstProductTitle);
             return elementTitleValue;
