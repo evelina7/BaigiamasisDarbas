@@ -6,13 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Framework.Pages
-
 {
     public class Common
     {
-        internal static IWebElement GetElement(string locator)
+        private static IWebElement GetElement(string locator)
         {
             return Driver.GetDriver().FindElement(By.XPath(locator));
+        }
+
+        private static List<IWebElement> GetElements(string locator)
+        {
+            return Driver.GetDriver().FindElements(By.XPath(locator)).ToList();
         }
 
         internal static string GetElementText(string locator)
@@ -57,9 +61,46 @@ namespace Framework.Pages
             return element.GetAttribute(attributeName);
         }
 
-        public static List<IWebElement> GetElements(string locator)
+
+
+        internal static void SendKeysToElementAndPressEnter(string locator, string keys)
         {
-            return Driver.GetDriver().FindElements(By.XPath(locator)).ToList();
+            SendKeysToElement(locator, keys + Keys.Enter);
+        }
+
+        internal static List<string> GetElementsText(string locator)
+        {
+            List<string> texts = new List<string>();
+            List<IWebElement> elements = GetElements(locator);
+
+            foreach (IWebElement element in elements)
+            {
+                texts.Add(element.Text);
+            }
+
+            return texts;
+        }
+
+        internal static List<string> GetElementsAttribute(string locator, string attributeName)
+        {
+            List<string> attributeValues = new List<string>();
+            List<IWebElement> elements = GetElements(locator);
+
+            foreach (IWebElement element in elements)
+            {
+                attributeValues.Add(element.GetAttribute(attributeName));
+            }
+
+            return attributeValues;
+        }
+
+        internal static void ScrollToElement(string locator)
+        {
+            IWebElement element = GetElement(locator);
+
+            Actions actions = new Actions(Driver.GetDriver());
+            actions.ScrollToElement(element);
+            actions.Perform();
         }
     }
 }

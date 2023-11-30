@@ -62,7 +62,6 @@
     <Compile Include="Pages\TeliaMano.cs" />
     <Compile Include="Pages\TeliaManoPrivatiems.cs" />
     <Compile Include="Pages\TeliaManoPrivatiemsSSO.cs" />
-    <Compile Include="Pages\TeliaPaieska.cs" />
     <Compile Include="Pages\TeliaPrekes.cs" />
     <Compile Include="Pages\TeliaPrekesPreke.cs" />
     <Compile Include="Pages\TeliaPrekesUzsakymas.cs" />

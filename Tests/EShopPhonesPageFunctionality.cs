@@ -1,10 +1,6 @@
 ﻿using Framework.Pages;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests
 {
@@ -13,15 +9,17 @@ namespace Tests
         [Test]
         public void FiltersFunctionality()
         {
-            //bool expectedFilteredSearchResult = true;
+            string expectedBrand = "Apple";
 
             Telia.ClickEshopSelectionButton();
             Telia.SelectPhonesFromEshopSelection();
-            TeliaPrekes.SelectCheckboxApplePhones();
-            List<string> actualFilteredSearchResult = TeliaPrekes.GetAllFilteredSearchResults();
-            List<string> expectedFilteredSearchResult = TeliaPrekes.CompareAllFilteredSearchResults();
+            TeliaPrekes.FilterByBrand(expectedBrand);
+            List<string> titles= TeliaPrekes.GetTitlesOfSearchResults();
 
-            Assert.That(actualFilteredSearchResult, Is.EqualTo(expectedFilteredSearchResult));
+            foreach (string title in titles)
+            {
+                Assert.That(title.Contains(expectedBrand));
+            }
         }
     }
 }

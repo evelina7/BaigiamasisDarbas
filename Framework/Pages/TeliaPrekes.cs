@@ -1,13 +1,4 @@
-﻿using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-using System.Xml.Linq;
-using System.Security.Policy;
+﻿using System.Collections.Generic;
 
 namespace Framework.Pages
 {
@@ -23,9 +14,7 @@ namespace Framework.Pages
         private static string comparisonModalProduct_2 = "(//*[@class='compare-basket']//*[@class='col-sm-4'])[2]";
         private static string comparisonPageProduct_1 = "(//*[@class='product-compare__wrapper']//*[@class='col-lg-3 col-sm-4'])[1]";
         private static string comparisonPageProduct_2 = "(//*[@class='product-compare__wrapper']//*[@class='col-lg-3 col-sm-4'])[2]";
-        private static string checkboxApplePhones = "(//*[@id='facet_eshop_brandTabletsPhones']//*[@class='checkbox__content'])[2]";
-        private static string showMoreButton = "//*[@id='facet_eshop_brandTabletsPhones']//*[@href='#']";
-        private static string resultsData = "//*[@class='col-lg-4 col-sm-6 col-xs-12 ']//*[@class='js-product-compare-image']";
+        private static string searchResultTitle = "//*[@data-type='PRODUCT']//*[contains(@class,'card__title')]";
 
         public static void ClickOnFirstProduct()
         {
@@ -50,14 +39,12 @@ namespace Framework.Pages
 
         public static string GetTitleFromProductComparisonModal_1()
         {
-            string element = Common.GetElementAttribute(comparisonModalProduct_1, "value");
-            return element;
+            return Common.GetElementAttribute(comparisonModalProduct_1, "value");
         }
 
         public static string GetTitleFromProductComparisonModal_2()
         {
-            string element = Common.GetElementAttribute(comparisonModalProduct_2, "value");
-            return element;
+            return Common.GetElementAttribute(comparisonModalProduct_2, "value");
         }
 
         public static void ClickOnButtonToOpenProductComparisonPage()
@@ -68,80 +55,27 @@ namespace Framework.Pages
 
         public static string GetComparedProductTile_1()
         {
-            string element = Common.GetElementAttribute(comparisonPageProduct_1, "value");
-            return element;
+            return Common.GetElementAttribute(comparisonPageProduct_1, "value");
         }
 
         public static string GetComparedProductTile_2()
         {
-            string element = Common.GetElementAttribute(comparisonPageProduct_2, "value");
-            return element;
+            return Common.GetElementAttribute(comparisonPageProduct_2, "value");
         }
 
-        public static void SelectCheckboxApplePhones()
+        public static string GetFirstProductTitle()
         {
-            new Actions(Driver.driver.Value).ScrollToElement(Common.GetElement(showMoreButton)).Perform();
-            Common.ClickElement(checkboxApplePhones);
+            return Common.GetElementText(firstProductTitle);
         }
 
-        public static List<string> GetAllFilteredSearchResults()
+        public static void FilterByBrand(string brandName)
         {
-            string elementTitleValue = Common.GetElementText(checkboxApplePhones);
-
-            List<string> resultsList = new List<string>();
-            List<IWebElement> elements = Common.GetElements(resultsData);
-            foreach (IWebElement element in elements)
-            {
-                if (element.GetAttribute("title").Contains(elementTitleValue))
-                {
-                    resultsList.Add(element.GetAttribute("title"));
-                }
-            }
-            return resultsList;
+            Common.ClickElement($"//*[@value='::eshop_brandTabletsPhones:{brandName}']/..//label");
         }
 
-        public static List<string> CompareAllFilteredSearchResults()
+        public static List<string> GetTitlesOfSearchResults()
         {
-            string elementTitleValue = Common.GetElementText(checkboxApplePhones);
-            List<string> resultsList = new List<string>();
-
-            foreach (string element in GetAllFilteredSearchResults())
-            {
-                if (element.Contains(elementTitleValue))
-                {
-                    resultsList.Add(element);
-                }
-            }
-            return resultsList;
-        }
-
-        //public static bool GetAllFilteredSearchResults()
-        //{
-        //    string elementTitleValue = Common.GetElementText(checkboxApplePhones);
-
-        //    List<bool> resultsList = new List<bool>();
-        //    List<IWebElement> elements = Common.GetElements(resultsData);
-        //    foreach (IWebElement element in elements)
-        //    {
-        //        if (element.GetAttribute("title").Contains(elementTitleValue))
-        //        {
-        //            resultsList.Add(element.Enabled);
-        //        }  
-        //    }
-        //    if (resultsList.Contains(true))
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    { 
-        //        return false;   
-        //    }
-        //}
-
-        public static string GetProductTitle()
-        {
-            string elementTitleValue = Common.GetElementText(firstProductTitle);
-            return elementTitleValue;
+            return Common.GetElementsText(searchResultTitle);
         }
     }
 }

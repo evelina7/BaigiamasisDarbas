@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-
-namespace Framework.Pages
+﻿namespace Framework.Pages
 {
     public class TeliaManoPrivatiems
     {
@@ -10,45 +8,10 @@ namespace Framework.Pages
         private static string byBankAccountSelection = "//*[@href='/mano/privatiems/sso/prisijungti-banku']";
         private static string chooseBankSwedbank = "//*[@alt='SWEDBANK']";
         private static string loginButton = "(//*[@type='submit'])[1]";
-        
-
-        public static bool CheckIfSelectedLoginMethodIsByPassword()
-        {
-            string expectedClassName = "link-icon link-icon--no-float";
-
-            IWebElement element = Common.GetElement(byPasswordSelection);
-            string actualClassName = element.GetAttribute("class");
-
-            if (actualClassName == expectedClassName)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool CheckIfSelectedLoginMethodIsByBankAccount()
-        {
-            string expectedClassName = "link-icon link-icon--no-float";
-
-            IWebElement element = Common.GetElement(byBankAccountSelection);
-            string actualClassName = element.GetAttribute("class");
-
-            if (actualClassName == expectedClassName)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         public static void SelectByPassword()
         {
-            if (CheckIfSelectedLoginMethodIsByPassword() == false)
+            if (Common.GetElementAttribute(byPasswordSelection, "class").Contains("c-black"))
             {
                 Common.ClickElement(byPasswordSelection);
             }
@@ -56,55 +19,30 @@ namespace Framework.Pages
 
         public static void SelectByBankAccount()
         {
-            if (CheckIfSelectedLoginMethodIsByBankAccount() == false)
+            if (Common.GetElementAttribute(byBankAccountSelection, "class").Contains("c-black"))
             {
                 Common.ClickElement(byBankAccountSelection);
             }
         }
 
-        public static bool CheckIfPasswordInputFieldExisting()
-        {
-            string expectedInputFieldPlaceholderValue = "Slaptažodis";
-
-            IWebElement element = Common.GetElement(passwordInputField);
-            string actualInputFieldPlaceholderValue = element.GetAttribute("placeholder");
-
-            if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool CheckIfUsernameInputFieldExisting()
-        {
-            string expectedInputFieldPlaceholderValue = "El. pašto adresas (Telia ID)";
-
-            IWebElement element = Common.GetElement(emailOrUsernameInputField);
-            string actualInputFieldPlaceholderValue = element.GetAttribute("placeholder");
-
-            if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static void PlaceholderInPasswordInputField()
-        {
-            Common.ClickElement(passwordInputField);
-        }
-
         public static void SelectBankSwedbank()
         {
             Common.ClickElement(chooseBankSwedbank);
+        }
+
+        public static void ClickLogin()
+        {
             Common.ClickElement(loginButton);
+        }
+
+        public static string GetUsernameFieldPlaceholder()
+        {
+            return Common.GetElementAttribute(emailOrUsernameInputField, "placeholder");
+        }
+
+        public static string GetPasswordFieldPlaceholder()
+        {
+            return Common.GetElementAttribute(passwordInputField, "placeholder");
         }
     }
 }

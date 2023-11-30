@@ -9,21 +9,17 @@ namespace Tests
         [Test]
         public void ByUsernameAndPassword()
         {
-            bool expectedInputField = true;
+            string expectedUsernamePlaceholder = "El. pašto adresas (Telia ID)";
+            string expectedPasswordPlaceholder = "Slaptažodis";
 
             Telia.ClickHomepageLoginButton();
             TeliaMano.ClickPrivateClientLoginButton();
-            TeliaManoPrivatiems.CheckIfSelectedLoginMethodIsByPassword();
             TeliaManoPrivatiems.SelectByPassword();
-            TeliaManoPrivatiems.CheckIfUsernameInputFieldExisting();
-            TeliaManoPrivatiems.CheckIfPasswordInputFieldExisting();
-            TeliaManoPrivatiems.PlaceholderInPasswordInputField();
-            bool actualPasswordInputField = TeliaManoPrivatiems.CheckIfPasswordInputFieldExisting();
-            bool actualUsernameInputField = TeliaManoPrivatiems.CheckIfUsernameInputFieldExisting();
+            string actualUsernamePlaceholder = TeliaManoPrivatiems.GetUsernameFieldPlaceholder();
+            string actualPasswordPlaceholder = TeliaManoPrivatiems.GetPasswordFieldPlaceholder();
 
-
-            Assert.That(actualUsernameInputField, Is.EqualTo(expectedInputField));
-            Assert.That(actualPasswordInputField, Is.EqualTo(expectedInputField));
+            Assert.That(actualUsernamePlaceholder, Is.EqualTo(expectedUsernamePlaceholder));
+            Assert.That(actualPasswordPlaceholder, Is.EqualTo(expectedPasswordPlaceholder));
         }
 
         [Test]
@@ -33,9 +29,9 @@ namespace Tests
 
             Telia.ClickHomepageLoginButton();
             TeliaMano.ClickPrivateClientLoginButton();
-            TeliaManoPrivatiems.CheckIfSelectedLoginMethodIsByBankAccount();
             TeliaManoPrivatiems.SelectByBankAccount();
             TeliaManoPrivatiems.SelectBankSwedbank();
+            TeliaManoPrivatiems.ClickLogin();
             string actualPageTitle = Driver.GetPageTitle();
 
             Assert.That(actualPageTitle, Is.EqualTo(expectedPageTitle));

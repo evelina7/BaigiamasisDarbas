@@ -1,11 +1,4 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Framework.Pages
+﻿namespace Framework.Pages
 {
     public class TeliaManoPrivatiemsSSO
     {
@@ -17,6 +10,7 @@ namespace Framework.Pages
         {
             Common.SendKeysToElement(emailInputField, emailValue);
         }
+
         public static void ClickSubmitButton()
         {
             Common.ClickElement(submitButton);
@@ -25,8 +19,7 @@ namespace Framework.Pages
         public static string GetEmailInputErrorMessage()
         {
             string locator = "//*[contains(text(),'Neteisingai įvestas el. pašto adresas')]";
-            IWebElement element = Common.GetElement(emailInputFieldErroMessage);
-            string actualLocator = element.Text;
+            string actualLocator = Common.GetElementText(emailInputFieldErroMessage);
 
             if (locator == actualLocator)
             {
