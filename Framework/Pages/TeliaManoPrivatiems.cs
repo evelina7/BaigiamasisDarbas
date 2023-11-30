@@ -8,26 +8,10 @@
         private static string byBankAccountSelection = "//*[@href='/mano/privatiems/sso/prisijungti-banku']";
         private static string chooseBankSwedbank = "//*[@alt='SWEDBANK']";
         private static string loginButton = "(//*[@type='submit'])[1]";
-        
-        public static bool CheckIfSelectedLoginMethodIsByPassword()
-        {
-            string expectedClassName = "link-icon link-icon--no-float";
-            string actualClassName = Common.GetElementAttribute(byPasswordSelection, "class");
-
-            return actualClassName == expectedClassName;
-        }
-
-        public static bool CheckIfSelectedLoginMethodIsByBankAccount()
-        {
-            string expectedClassName = "link-icon link-icon--no-float";
-            string actualClassName = Common.GetElementAttribute(byBankAccountSelection, "class");
-
-            return actualClassName == expectedClassName;
-        }
 
         public static void SelectByPassword()
         {
-            if (!CheckIfSelectedLoginMethodIsByPassword())
+            if (Common.GetElementAttribute(byPasswordSelection, "class").Contains("c-black"))
             {
                 Common.ClickElement(byPasswordSelection);
             }
@@ -35,37 +19,30 @@
 
         public static void SelectByBankAccount()
         {
-            if (!CheckIfSelectedLoginMethodIsByBankAccount())
+            if (Common.GetElementAttribute(byBankAccountSelection, "class").Contains("c-black"))
             {
                 Common.ClickElement(byBankAccountSelection);
             }
         }
 
-        public static bool CheckIfPasswordInputFieldExisting()
-        {
-            string expectedInputFieldPlaceholderValue = "Slaptažodis";
-            string actualInputFieldPlaceholderValue = Common.GetElementAttribute(passwordInputField, "placeholder");
-
-            return actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue;
-        }
-
-        public static bool CheckIfUsernameInputFieldExisting()
-        {
-            string expectedInputFieldPlaceholderValue = "El. pašto adresas (Telia ID)";
-            string actualInputFieldPlaceholderValue = Common.GetElementAttribute(emailOrUsernameInputField, "placeholder");
-
-            return actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue;
-        }
-
-        public static void PlaceholderInPasswordInputField()
-        {
-            Common.ClickElement(passwordInputField);
-        }
-
         public static void SelectBankSwedbank()
         {
             Common.ClickElement(chooseBankSwedbank);
+        }
+
+        public static void ClickLogin()
+        {
             Common.ClickElement(loginButton);
+        }
+
+        public static string GetUsernameFieldPlaceholder()
+        {
+            return Common.GetElementAttribute(emailOrUsernameInputField, "placeholder");
+        }
+
+        public static string GetPasswordFieldPlaceholder()
+        {
+            return Common.GetElementAttribute(passwordInputField, "placeholder");
         }
     }
 }
