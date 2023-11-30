@@ -13,7 +13,7 @@ namespace Tests
 
             Telia.ClickButtonGlobalSearch();
             Telia.AddedValueToGlobalSearch(productCategory);
-            List<string> results = TeliaPaieska.GetTitlesOfSearchResults();
+            List<string> results = TeliaPrekes.GetTitlesOfSearchResults();
 
             foreach (string result in results)
             {

@@ -25,8 +25,7 @@ namespace Framework.Pages
         public static string GetEmailInputErrorMessage()
         {
             string locator = "//*[contains(text(),'Neteisingai įvestas el. pašto adresas')]";
-            IWebElement element = Common.GetElement(emailInputFieldErroMessage);
-            string actualLocator = element.Text;
+            string actualLocator = Common.GetElementText(emailInputFieldErroMessage);
 
             if (locator == actualLocator)
             {

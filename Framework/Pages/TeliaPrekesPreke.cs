@@ -11,7 +11,7 @@ namespace Framework.Pages
 {
     public class TeliaPrekesPreke
     {
-        private static string buyProductButton = "//*[@data-test='cart-box-action-button']";
+        private static string buyProductButton = "//*[@class='desktop-sticky-summary__section']//*[@data-test='cart-box-action-button']";
         private static string forFullPriceRadioButton = "//*[@id=\"fullPayment\"]";
         private static string element = "//telia-col//*[text()='Visa kaina']";
         private static string withoutPricePlanSelection = "//telia-col//*[text()='Be plano']";
@@ -20,20 +20,15 @@ namespace Framework.Pages
 
         public static void ClickOnBuyButton()
         {
+            Common.ScrollToElement(buyProductButton);
             Common.ClickElement(buyProductButton);
         }
 
         public static void SelectWithoutPricePlan()
         {
             Common.WaitForElementToBeVisible(productPaymentBlock);
-            new Actions(Driver.driver.Value).ScrollToElement(Common.GetElement(productPaymentBlock)).Perform();
+            Common.ScrollToElement(productPaymentBlock);
             Common.ClickElement(withoutPricePlanSelection);
-        }
-
-        public static void SelectFullPriceRadioButton()
-        {
-            Common.WaitForElementToBeVisible(element);
-            new Actions(Driver.driver.Value).ScrollToElement(Common.GetElement(element)).Perform();
         }
     }
 }

@@ -16,8 +16,7 @@ namespace Framework.Pages
         {
             string expectedClassName = "link-icon link-icon--no-float";
 
-            IWebElement element = Common.GetElement(byPasswordSelection);
-            string actualClassName = element.GetAttribute("class");
+            string actualClassName = Common.GetElementAttribute(byPasswordSelection, "class");
 
             if (actualClassName == expectedClassName)
             {
@@ -33,8 +32,7 @@ namespace Framework.Pages
         {
             string expectedClassName = "link-icon link-icon--no-float";
 
-            IWebElement element = Common.GetElement(byBankAccountSelection);
-            string actualClassName = element.GetAttribute("class");
+            string actualClassName = Common.GetElementAttribute(byBankAccountSelection, "class");
 
             if (actualClassName == expectedClassName)
             {
@@ -66,8 +64,7 @@ namespace Framework.Pages
         {
             string expectedInputFieldPlaceholderValue = "Slaptažodis";
 
-            IWebElement element = Common.GetElement(passwordInputField);
-            string actualInputFieldPlaceholderValue = element.GetAttribute("placeholder");
+            string actualInputFieldPlaceholderValue = Common.GetElementAttribute(passwordInputField, "placeholder");
 
             if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
             {
@@ -83,8 +80,7 @@ namespace Framework.Pages
         {
             string expectedInputFieldPlaceholderValue = "El. pašto adresas (Telia ID)";
 
-            IWebElement element = Common.GetElement(emailOrUsernameInputField);
-            string actualInputFieldPlaceholderValue = element.GetAttribute("placeholder");
+            string actualInputFieldPlaceholderValue = Common.GetElementAttribute(emailOrUsernameInputField, "placeholder");
 
             if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
             {

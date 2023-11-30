@@ -16,15 +16,14 @@ namespace Tests
             Telia.ClickEshopSelectionButton();
             Telia.SelectPhonesFromEshopSelection();
 
-            string elementName = TeliaPrekes.GetProductTitle();
+            string productName = TeliaPrekes.GetProductTitle();
 
             TeliaPrekes.ClickOnFirstProduct();
             TeliaPrekesPreke.SelectWithoutPricePlan();
-            TeliaPrekesPreke.SelectFullPriceRadioButton();
             TeliaPrekesPreke.ClickOnBuyButton();
             string actualName = TeliaPrekesUzsakymas.GetBasketProductTitle();
 
-              Assert.That(actualName, Is.EqualTo(elementName));
+            Assert.That(actualName, Is.EqualTo(productName));
         }
     }
 }
