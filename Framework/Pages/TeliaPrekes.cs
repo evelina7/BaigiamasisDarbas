@@ -1,13 +1,4 @@
-﻿using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
-using System.Xml.Linq;
-using System.Security.Policy;
+﻿using System.Collections.Generic;
 
 namespace Framework.Pages
 {

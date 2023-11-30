@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-
-namespace Framework.Pages
+﻿namespace Framework.Pages
 {
     public class TeliaMano
     {

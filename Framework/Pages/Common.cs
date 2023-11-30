@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Framework.Pages
-
 {
     public class Common
     {
