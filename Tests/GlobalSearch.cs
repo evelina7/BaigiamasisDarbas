@@ -13,7 +13,6 @@ namespace Tests
 
             Telia.ClickButtonGlobalSearch();
             Telia.AddedValueToGlobalSearch(productCategory);
-            Telia.ClickEnterToSearch();
             TeliaPaieska.CheckIfSearchResultIsEqualToSearchValue();
             string actualInputFieldResult = TeliaPaieska.CheckIfSearchResultIsEqualToSearchValue();
 

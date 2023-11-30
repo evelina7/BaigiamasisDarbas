@@ -61,5 +61,10 @@ namespace Framework.Pages
         {
             return Driver.GetDriver().FindElements(By.XPath(locator)).ToList();
         }
+
+        internal static void SendKeysToElementAndPressEnter(string locator, string keys)
+        {
+            SendKeysToElement(locator, keys + Keys.Enter);
+        }
     }
 }

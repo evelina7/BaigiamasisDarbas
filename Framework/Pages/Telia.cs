@@ -39,13 +39,7 @@ namespace Framework.Pages
         }
         public static void AddedValueToGlobalSearch(string productCategory)
         {
-            Common.SendKeysToElement(globalSearchInputField, productCategory);
+            Common.SendKeysToElementAndPressEnter(globalSearchInputField, productCategory);
         }
-
-        public static void ClickEnterToSearch()
-        {
-            Common.SendKeysToElement(globalSearchInputField, Keys.Enter);
-        }
-
     }
 }
