@@ -1,6 +1,6 @@
-﻿using Framework;
-using Framework.Pages;
+﻿using Framework.Pages;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Tests
 {
@@ -9,14 +9,16 @@ namespace Tests
         [Test]
         public void SearchProductByCategoryName() 
         {
-            string productCategory = "samsung";
+            string productCategory = "Samsung";
 
             Telia.ClickButtonGlobalSearch();
             Telia.AddedValueToGlobalSearch(productCategory);
-            TeliaPaieska.CheckIfSearchResultIsEqualToSearchValue();
-            string actualInputFieldResult = TeliaPaieska.CheckIfSearchResultIsEqualToSearchValue();
+            List<string> results = TeliaPaieska.GetTitlesOfSearchResults();
 
-            Assert.That(actualInputFieldResult, Is.EqualTo(productCategory));
+            foreach (string result in results)
+            {
+                Assert.That(result.Contains(productCategory));
+            }
         }
     }
 }

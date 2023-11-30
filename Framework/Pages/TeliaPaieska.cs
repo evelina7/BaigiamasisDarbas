@@ -1,24 +1,14 @@
-﻿using OpenQA.Selenium;
+﻿using System.Collections.Generic;
 
 namespace Framework.Pages
 {
     public class TeliaPaieska
     {
-        private static string searchInputField = "(//*[@name='ieskoti'])[3]";
+        private static string searchResultTitle = "//*[@data-type='PRODUCT']//*[contains(@class,'card__title')]";
 
-        public static string CheckIfSearchResultIsEqualToSearchValue()
+        public static List<string> GetTitlesOfSearchResults()
         {
-            string expectedInputFieldPlaceholderValue = "samsung";
-            string actualInputFieldPlaceholderValue = Common.GetElementAttribute(searchInputField, "value");
-
-            if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
-            {
-                return actualInputFieldPlaceholderValue;
-            }
-            else
-            {
-                return actualInputFieldPlaceholderValue;
-            }
+            return Common.GetTextOfElements(searchResultTitle);
         }
     }
 }
