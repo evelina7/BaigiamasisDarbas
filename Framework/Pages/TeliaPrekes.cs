@@ -16,7 +16,6 @@ namespace Framework.Pages
         private static string comparisonPageProduct_2 = "(//*[@class='product-compare__wrapper']//*[@class='col-lg-3 col-sm-4'])[2]";
         private static string searchResultTitle = "//*[@data-type='PRODUCT']//*[contains(@class,'card__title')]";
 
-
         public static void ClickOnFirstProduct()
         {
             Common.ClickElement(firstProduct);
@@ -40,14 +39,12 @@ namespace Framework.Pages
 
         public static string GetTitleFromProductComparisonModal_1()
         {
-            string element = Common.GetElementAttribute(comparisonModalProduct_1, "value");
-            return element;
+            return Common.GetElementAttribute(comparisonModalProduct_1, "value");
         }
 
         public static string GetTitleFromProductComparisonModal_2()
         {
-            string element = Common.GetElementAttribute(comparisonModalProduct_2, "value");
-            return element;
+            return Common.GetElementAttribute(comparisonModalProduct_2, "value");
         }
 
         public static void ClickOnButtonToOpenProductComparisonPage()
@@ -58,20 +55,17 @@ namespace Framework.Pages
 
         public static string GetComparedProductTile_1()
         {
-            string element = Common.GetElementAttribute(comparisonPageProduct_1, "value");
-            return element;
+            return Common.GetElementAttribute(comparisonPageProduct_1, "value");
         }
 
         public static string GetComparedProductTile_2()
         {
-            string element = Common.GetElementAttribute(comparisonPageProduct_2, "value");
-            return element;
+            return Common.GetElementAttribute(comparisonPageProduct_2, "value");
         }
 
         public static string GetFirstProductTitle()
         {
-            string elementTitleValue = Common.GetElementText(firstProductTitle);
-            return elementTitleValue;
+            return Common.GetElementText(firstProductTitle);
         }
 
         public static void FilterByBrand(string brandName)

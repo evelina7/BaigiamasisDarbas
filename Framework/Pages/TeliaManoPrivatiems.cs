@@ -9,42 +9,25 @@
         private static string chooseBankSwedbank = "//*[@alt='SWEDBANK']";
         private static string loginButton = "(//*[@type='submit'])[1]";
         
-
         public static bool CheckIfSelectedLoginMethodIsByPassword()
         {
             string expectedClassName = "link-icon link-icon--no-float";
-
             string actualClassName = Common.GetElementAttribute(byPasswordSelection, "class");
 
-            if (actualClassName == expectedClassName)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return actualClassName == expectedClassName;
         }
 
         public static bool CheckIfSelectedLoginMethodIsByBankAccount()
         {
             string expectedClassName = "link-icon link-icon--no-float";
-
             string actualClassName = Common.GetElementAttribute(byBankAccountSelection, "class");
 
-            if (actualClassName == expectedClassName)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return actualClassName == expectedClassName;
         }
 
         public static void SelectByPassword()
         {
-            if (CheckIfSelectedLoginMethodIsByPassword() == false)
+            if (!CheckIfSelectedLoginMethodIsByPassword())
             {
                 Common.ClickElement(byPasswordSelection);
             }
@@ -52,7 +35,7 @@
 
         public static void SelectByBankAccount()
         {
-            if (CheckIfSelectedLoginMethodIsByBankAccount() == false)
+            if (!CheckIfSelectedLoginMethodIsByBankAccount())
             {
                 Common.ClickElement(byBankAccountSelection);
             }
@@ -61,33 +44,17 @@
         public static bool CheckIfPasswordInputFieldExisting()
         {
             string expectedInputFieldPlaceholderValue = "Slaptažodis";
-
             string actualInputFieldPlaceholderValue = Common.GetElementAttribute(passwordInputField, "placeholder");
 
-            if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue;
         }
 
         public static bool CheckIfUsernameInputFieldExisting()
         {
             string expectedInputFieldPlaceholderValue = "El. pašto adresas (Telia ID)";
-
             string actualInputFieldPlaceholderValue = Common.GetElementAttribute(emailOrUsernameInputField, "placeholder");
 
-            if (actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return actualInputFieldPlaceholderValue == expectedInputFieldPlaceholderValue;
         }
 
         public static void PlaceholderInPasswordInputField()

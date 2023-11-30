@@ -10,6 +10,7 @@
         {
             Common.SendKeysToElement(emailInputField, emailValue);
         }
+
         public static void ClickSubmitButton()
         {
             Common.ClickElement(submitButton);
